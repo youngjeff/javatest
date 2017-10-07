@@ -1,7 +1,12 @@
 package nod.countandsay;
 
+import java.lang.String;
 public class Main {
-
+    public static void main(String[] args)
+    {
+        Solution sl = new Solution();
+        System.out.println(sl.countAndSay(4));
+    }
 }
 class Solution {
     public String countAndSay(int n) {
@@ -13,13 +18,17 @@ class Solution {
             String str = countAndSay(n-1)+"*";
             int count = 1;
             String result = "";
-            for(int i=0;i<str.length();i++)
+            for(int i=0;i<str.length()-1;i++)
             {
-                if(str[i] == str[i=1])
-                {
-                    
+                if(str.charAt(i) == str.charAt(i+1)){
+                    count++;
+                }
+                else{
+                    result = result + String.valueOf(count) + str.charAt(i);
+                    count = 1;
                 }
             }
+            return result;
         }
     }
 }
